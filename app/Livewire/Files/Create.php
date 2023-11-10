@@ -26,7 +26,7 @@ class Create extends Component
     public function save()
     {
         $this->validate([
-            'file' => 'mimes:pdf,png,jpg,ppt,pptx|max:202400'
+            'file' => 'max:202400'
         ]);
         $path = $this->file->store('files/' . $this->type_id, ['disk' => 'local']);;
         //$path = $this->file->store('files/' . $this->type_id);
