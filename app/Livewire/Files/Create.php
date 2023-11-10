@@ -12,7 +12,6 @@ class Create extends Component
 {
     use WithFileUploads;
 
-    #[Rule('mimes:pdf,jpg,png')]
     public $file;
     public $saving;
     public $title;
@@ -22,12 +21,15 @@ class Create extends Component
     protected $rules = [
         'title' => 'required',
         'type_id' => 'required',
-        'file' => 'required|max:10240',
     ];
 
     public function save()
     {
-        $path = $this->file->store('files/' . $this->type_id);
+        $this->validate([
+            'file' => 'mimes:pdf,png,jpg,ppt,pptx|max:202400'
+        ]);
+        $path = $this->file->store('files/' . $this->type_id, ['disk' => 'local']);;
+        //$path = $this->file->store('files/' . $this->type_id);
         $this->saving = new File();
         $this->saving->title = $this->title;
         $this->saving->path = $path;
