@@ -42,10 +42,10 @@
                     </td>
                     <td class="px-6 py-4">
                         <a type="button" class="cursor-pointer text-blue-800"
-                           wire:click="download({{$file}})">Baixar</a>
+                           wire:click="download({{$file->id}})">Baixar</a>
                     </td>
                     <td class="px-6 py-4">
-                        <a type="button" class="cursor-pointer text-red-600" wire:click="delete({{$file}})">Excluir</a>
+                        <a type="button" class="cursor-pointer text-red-600" wire:click="delete({{$file->id}})">Excluir</a>
                     </td>
                 </tr>
             @endforeach

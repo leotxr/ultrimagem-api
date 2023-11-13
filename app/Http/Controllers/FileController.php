@@ -24,4 +24,15 @@ class FileController extends Controller
         return Storage::disk('local')->download("$downloaded->path", $downloaded->title . '.pdf');
     }
 
+    public function downloadLast()
+    {
+        $downloaded = File::where('file_type_id', 1)->orderBy('created_at', 'desc')->first();
+        return $this->download($downloaded);
+    }
+
+    public function last()
+    {
+        return File::where('file_type_id', 1)->orderBy('created_at', 'desc')->first();
+    }
+
 }

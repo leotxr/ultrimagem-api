@@ -24,12 +24,14 @@ Route::view('profile', 'profile')
     Route::middleware(['auth'])->group(function(){
         Route::view('/', 'dashboard')
             ->name('dashboard');
-        Route::view('dashboard', 'dashboard')
-            ->name('dashboard');
         Route::view('files/create', 'files.create')
             ->name('files.create');
         Route::view('files', 'files.show')
             ->name('files.show');
+        Route::view('leads', 'leads.index')
+            ->name('leads.index');
+        Route::view('leads/disparar', 'leads.fire-leads')
+            ->name('leads.fire');
     });
 
 require __DIR__.'/auth.php';

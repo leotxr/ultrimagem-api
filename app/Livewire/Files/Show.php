@@ -29,7 +29,7 @@ class Show extends Component
     $this->deleted = $deleted;
     Storage::disk('local')->delete($this->deleted->path);
     $this->deleted->delete();
-        return redirect()->back();
+        return redirect()->to('/files');
     }
     public function render()
     {

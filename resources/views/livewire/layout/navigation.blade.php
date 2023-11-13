@@ -37,6 +37,12 @@ new class extends Component
                     <x-nav-link :href="route('files.show')" :active="request()->routeIs('files.show')" wire:navigate>
                         {{ __('Arquivos') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('leads.index')" :active="request()->routeIs('leads.index')" wire:navigate>
+                        {{ __('Leads') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('leads.fire')" :active="request()->routeIs('leads.fire')" wire:navigate>
+                        {{ __('Disparo') }}
+                    </x-nav-link>
                 </div>
             </div>
 
