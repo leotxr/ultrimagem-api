@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LeadController;
 
 /*
@@ -27,3 +28,6 @@ Route::get('download-last', [FileController::class, 'downloadLast']);
 Route::get('files/last', [FileController::class, 'last']);
 Route::post('leads', [LeadController::class, 'store']);
 
+Route::get('imagens', [ImageController::class, 'index']);
+Route::post('imagens/salvar', [ImageController::class, 'store']);
+Route::get('imagens/{id}', [ImageController::class, 'show']);
