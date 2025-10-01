@@ -29,5 +29,7 @@ Route::get('files/last', [FileController::class, 'last']);
 Route::post('leads', [LeadController::class, 'store']);
 
 Route::get('imagens', [ImageController::class, 'index']);
+Route::get('imagens/mobile', [ImageController::class, 'getMobileImages']);
+Route::get('imagens/desktop', [ImageController::class, 'getDesktopImages']);
 Route::post('imagens/salvar', [ImageController::class, 'store']);
 Route::get('imagens/{id}', [ImageController::class, 'show']);

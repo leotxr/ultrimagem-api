@@ -9,9 +9,9 @@ class ImageController extends Controller
 {
     private $model;
 
-    public function __construct(Image $model)
+    public function __construct($model = null)
     {
-        $this->model = $model;
+        $this->model = $model ?? new Image();
     }
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ImageController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'imagem'    => 'required|image|max:2048'
+            'imagem'    => 'required|image|max:202400'
         ]);
 
-        $path = $request->file('imagem')->store('imagens', 'public');
+        $path = $request->file('imagem')->store('files', ['disk' => 'local']);;
 
         if (!$path) {
             return response()->json([
@@ -129,5 +129,32 @@ class ImageController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function getMobileImages(Request $request)
+    {
+        $imagens = $this->model->where('mobile', true)->where('active', true)->get();
+
+        return response()->json([
+            'erro'      =>  false,
+            'mensagem'  => 'Imagens encontradas com sucesso!',
+            'dados'     => $imagens
+        ], 201);
+    }
+
+    public function getDesktopImages(Request $request)
+    {
+        $imagens = $this->model->where('mobile', false)->where('active', true)->get();
+
+        return response()->json([
+            'erro'      =>  false,
+            'mensagem'  => 'Imagens encontradas com sucesso!',
+            'dados'     => $imagens
+        ], 201);
+    }
+
+    public function download($id)
+    {
+
     }
 }

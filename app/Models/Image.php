@@ -13,6 +13,7 @@ class Image extends Model
         'title',
         'path',
         'hash',
+        'order',
         'mobile',
         'active'
     ];

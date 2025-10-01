@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('path');
             $table->string('hash')->nullable();
+            $table->integer('order')->default(0);
             $table->boolean('mobile')->default(false);
             $table->boolean('active')->default(true);
             $table->timestamps();
