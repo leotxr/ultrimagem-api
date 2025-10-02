@@ -25,7 +25,7 @@ class Create extends Component
 
     public function salvar()
     {
-        $path = $this->file->store('files', ['disk' => 'local']);
+        $path = $this->file->store('files', 'public');
         $this->saving = new Image();
         $this->saving->title = $this->title;
         $this->saving->path = $path;

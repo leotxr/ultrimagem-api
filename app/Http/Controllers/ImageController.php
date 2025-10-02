@@ -44,7 +44,7 @@ class ImageController extends Controller
             'imagem'    => 'required|image|max:202400'
         ]);
 
-        $path = $request->file('imagem')->store('files', ['disk' => 'local']);;
+        $path = $request->file('imagem')->store('files', 'public');
 
         if (!$path) {
             return response()->json([
