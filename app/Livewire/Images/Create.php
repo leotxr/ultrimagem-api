@@ -25,6 +25,7 @@ class Create extends Component
 
     public function salvar()
     {
+        //teste
         $path = $this->file->store('files', 'public');
         $this->saving = new Image();
         $this->saving->title = $this->title;
