@@ -20,10 +20,18 @@ class ImageController extends Controller
     {
         $imagens = $this->model->where('active', true)->orderBy('id')->get();
 
+        foreach ($imagens as $imagem) {
+            $retornoImagens = [
+                'id'    =>  $imagem['id'],
+                'imagem'    => asset('storage/' . $imagem['path']),
+            ];
+        }
+
+
         return response()->json([
             'erro'      =>  false,
             'mensagem'  => 'Dados recuperados!',
-            'dados'     => $imagens
+            'dados'     => $retornoImagens
         ], 201);
     }
 
@@ -154,8 +162,5 @@ class ImageController extends Controller
         ], 201);
     }
 
-    public function download($id)
-    {
-
-    }
+    public function download($id) {}
 }
