@@ -18,12 +18,11 @@ class ImageController extends Controller
      */
     public function index()
     {
+        $retornoImagens = [];
         $imagens = $this->model->where('active', true)->orderBy('id')->get();
 
-        dd($imagens);
-
         foreach ($imagens as $imagem) {
-            $retornoImagens = [
+            $retornoImagens[] = [
                 'id'        =>  $imagem['id'],
                 'image'     =>  asset('storage/' . $imagem['path']),
                 'mobile'    =>  $imagem['mobile']
