@@ -20,6 +20,8 @@ class ImageController extends Controller
     {
         $imagens = $this->model->where('active', true)->orderBy('id')->get();
 
+        dd($imagens);
+
         foreach ($imagens as $imagem) {
             $retornoImagens = [
                 'id'        =>  $imagem['id'],
