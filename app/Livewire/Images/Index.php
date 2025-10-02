@@ -10,7 +10,7 @@ use App\Models\Image;
 class Index extends Component
 {
     public $imagens = [];
-    private $imagem = [];
+    private $imagem;
 
 
     public function mount()
@@ -27,13 +27,13 @@ class Index extends Component
     {
         //implementar chamando o controller futuramente
         $this->imagem = $baixada;
-        return Storage::disk('local')->download($this->imagem->path);
+        return Storage::disk('public')->download($this->imagem->path);
     }
 
     public function delete(Image $deleted)
     {
         $this->imagem = $deleted;
-        Storage::disk('local')->delete($this->imagem->path);
+        Storage::disk('public')->delete($this->imagem->path);
         $this->imagem->delete();
         return redirect()->to('/imagens');
     }
