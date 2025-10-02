@@ -22,8 +22,9 @@ class ImageController extends Controller
 
         foreach ($imagens as $imagem) {
             $retornoImagens = [
-                'id'    =>  $imagem['id'],
-                'imagem'    => asset('storage/' . $imagem['path']),
+                'id'        =>  $imagem['id'],
+                'image'     =>  asset('storage/' . $imagem['path']),
+                'mobile'    =>  $imagem['mobile']
             ];
         }
 
