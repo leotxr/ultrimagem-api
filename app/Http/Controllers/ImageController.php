@@ -40,6 +40,7 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
+        //teste
         $request->validate([
             'imagem'    => 'required|image|max:202400'
         ]);
