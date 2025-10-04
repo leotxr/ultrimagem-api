@@ -18,6 +18,7 @@ class ImageController extends Controller
      */
     public function index()
     {
+        //TESTE
         $retornoImagens = [];
         $imagens = $this->model->where('active', true)->orderBy('id')->get();
 
